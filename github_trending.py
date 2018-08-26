@@ -45,16 +45,16 @@ def get_open_issues_amount(repo):
 
 
 def print_rep_info(repos):
-    for i in repos:
-        name = i['name']
-        stars = i['stargazers_count']
-        open_issues = get_open_issues_amount(i)
+    for repo in repos:
+        repo_name = repo["name"]
+        stars = repo["stargazers_count"]
+        open_issues = get_open_issues_amount(repo)
         print("=> {}({} stars) - {} open issue(s):".format(
-            name,
+            repo_name,
             stars,
             len(open_issues)),
         )
-        print("\n".join([i["url"] for i in open_issues]), "\n")
+        print("\n".join([issues["url"] for issues in open_issues]), "\n")
 
 
 def main():
@@ -67,5 +67,5 @@ def main():
     print_rep_info(trending_repos)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
