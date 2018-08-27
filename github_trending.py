@@ -6,11 +6,11 @@ def get_start_date(day_shift=7):
     now = datetime.datetime.now()
     delta = datetime.timedelta(days=day_shift)
     start_date = now - delta
-    return "%04d-%02d-%02d" % (
+    return datetime.date(
         start_date.year,
         start_date.month,
         start_date.day
-    )
+    ).isoformat()
 
 
 def get_decoded_repos_json(page, date):
