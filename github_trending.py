@@ -6,11 +6,7 @@ def get_start_date(day_shift=7):
     now = datetime.datetime.now()
     delta = datetime.timedelta(days=day_shift)
     start_date = now - delta
-    return datetime.date(
-        start_date.year,
-        start_date.month,
-        start_date.day
-    ).isoformat()
+    return start_date.isoformat()
 
 
 def get_repos(date):
@@ -27,8 +23,6 @@ def get_trending_repositories(date, top_size):
     repos = get_repos(date)["items"]
     if not repos:
         return []
-    elif len(repos)<top_size:
-        return repos
     return repos[:top_size]
 
 
